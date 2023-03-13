@@ -1,4 +1,5 @@
 const time = dayjs()
+const timeDate = time.toDate()
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -23,21 +24,32 @@ const time = dayjs()
   //
   // TODO: Add code to display the current date in the header of the page.
 
-$('.time-block').each(currentFutureUpdate);
+$('.time-block').each(timeBlockLoad);
+$('#currentDay').each(currentDisplay)
 
 
-function currentFutureUpdate() {
+
+function timeBlockLoad() {
   let block = parseInt($(this).attr('id').split('-')[1])
-  console.log(block,'block')
-  console.log(time.hour(), 'hour')
-  console.log(time.minute(), 'min')
+  //console.log(block,'block')
+  //console.log(time.hour(), 'hour')
+  //console.log(time.minute(), 'min')
+
   if (block < time.hour()) {
     $(this).addClass('past')
+
   } else if (block == time.hour()) {
     $(this).addClass('present')
+
   } else {
     $(this).addClass('future')
   }
-  
-  return 
+
+}
+
+function currentDisplay() {
+  let month = timeDate.toLocaleString('en-US', {month: 'long'})
+  let weekday = timeDate.toLocaleString('en-US', {weekday: 'long'})
+  let day = weekday +', ' + month + ' ' + time.date()
+  $(this).text(day)
 }
