@@ -25,7 +25,8 @@ const timeDate = time.toDate()
   // TODO: Add code to display the current date in the header of the page.
 
 $('.time-block').each(timeBlockLoad);
-$('#currentDay').each(currentDisplay)
+$('#currentDay').each(currentDisplay);
+
 
 
 
@@ -44,12 +45,17 @@ function timeBlockLoad() {
   } else {
     $(this).addClass('future')
   }
-
 }
 
 function currentDisplay() {
+
   let month = timeDate.toLocaleString('en-US', {month: 'long'})
   let weekday = timeDate.toLocaleString('en-US', {weekday: 'long'})
   let day = weekday +', ' + month + ' ' + time.date()
   $(this).text(day)
+}
+
+function saveData() {
+
+  return
 }
