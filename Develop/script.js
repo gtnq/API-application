@@ -1,8 +1,10 @@
+const time = dayjs()
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
+
+// TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
@@ -20,10 +22,22 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
+
+$('.time-block').each(currentFutureUpdate);
 
 
 function currentFutureUpdate() {
-  let current = moment()
+  let block = parseInt($(this).attr('id').split('-')[1])
+  console.log(block,'block')
+  console.log(time.hour(), 'hour')
+  console.log(time.minute(), 'min')
+  if (block < time.hour()) {
+    $(this).addClass('past')
+  } else if (block == time.hour()) {
+    $(this).addClass('present')
+  } else {
+    $(this).addClass('future')
+  }
+  
   return 
 }
