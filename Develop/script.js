@@ -1,5 +1,6 @@
-const time = dayjs()
+const time = dayjs('2018-04-13 15:18:17.040-08:00')
 const timeDate = time.toDate()
+//console.log(time)
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -26,7 +27,7 @@ const timeDate = time.toDate()
 
 $('.time-block').each(timeBlockLoad);
 $('#currentDay').each(currentDisplay);
-
+$('.saveBtn').each(saveLoadNotes)
 
 
 
@@ -55,7 +56,10 @@ function currentDisplay() {
   $(this).text(day)
 }
 
-function saveData() {
+function saveLoadNotes() {
+  let block = $(this).parent().attr('id')
+  let info = $(this).siblings('.description').value()
+  localStorage.setItem(block,info)
 
-  return
+  console.log(localStorage)
 }
