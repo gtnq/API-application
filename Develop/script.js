@@ -1,4 +1,4 @@
-const time = dayjs('2018-04-13 15:18:17.040-08:00')
+const time = dayjs()
 const timeDate = time.toDate()
 //console.log(time)
 
