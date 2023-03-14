@@ -25,9 +25,9 @@ const timeDate = time.toDate()
   //
   // TODO: Add code to display the current date in the header of the page.
 
-$('.time-block').each(timeBlockLoad);
-$('#currentDay').each(currentDisplay);
-$('.saveBtn').each(saveLoadNotes)
+$('.time-block').each(timeBlockLoad)
+$('#currentDay').each(currentDisplay)
+$('.saveBtn').on('click',saveLoadNotes)
 
 
 
@@ -58,7 +58,7 @@ function currentDisplay() {
 
 function saveLoadNotes() {
   let block = $(this).parent().attr('id')
-  let info = $(this).siblings('.description').value()
+  let info = $(this).siblings('.description').val()
   localStorage.setItem(block,info)
 
   console.log(localStorage)
